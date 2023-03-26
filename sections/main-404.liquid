@@ -1,0 +1,61 @@
+<div>
+  <div>
+    {% form 'contact', id: 'customer-form' %}
+      <div id="wrapper" class="customer">
+        <p class="text">Enter your email to get exclusive photos an videos of {{ pet_name }}</p>
+
+        <div class="field">
+          <input
+            type="text"
+            name="contact[first_name]"
+            id="FirstName"
+            value="{% if customer.first_name != blank %}{{ customer.first_name }}{% endif %}"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+            placeholder="First Name"
+            autocorrect="off"
+            autocapitalize="on"
+            required
+          >
+          <label for="FirstName">First Name </label>
+        </div>
+        <div class="field">
+          <input
+            type="email"
+            name="contact[email]"
+            id="Email"
+            value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+            placeholder="Email"
+            autocorrect="off"
+            required
+          >
+          <label for="Email"> Email </label>
+        </div>
+        <input type="hidden" name="contact[tags]" value="requestedMorePhotos">
+        <input
+          type="hidden"
+          name="contact[note][hasan]"
+          value="requestedMorePhotos"
+        >
+                <input
+          type="hidden"
+          name="contact[metafields][custom]"
+          value="requestedMorePhotos"
+        >
+
+        <button
+          type="submit"
+          name="commit"
+          id="Subscribe"
+          class="submit-button"
+        >
+          Get
+        </button>
+      </div>
+    {% endform %}
+  </div>
+</div>
